@@ -15,7 +15,7 @@ fn main() -> ExitCode {
         .arg(
             arg!(--iterations <n>)
                 .value_parser(value_parser!(i64))
-                .default_value("20")
+                .default_value("5")
                 .required(false)
                 .help("Number of measurements to perform"),
         )
@@ -35,8 +35,7 @@ fn main() -> ExitCode {
                      ")
         .get_matches();
 
-    //let iterations = *matches.get_one::<i64>("iterations").unwrap();
-    let iterations = 5;
+    let iterations = *matches.get_one::<i64>("iterations").unwrap();
     let command = matches.get_one::<String>("command").unwrap();
     let options: Vec<_> = matches
         .get_many::<String>("args")
